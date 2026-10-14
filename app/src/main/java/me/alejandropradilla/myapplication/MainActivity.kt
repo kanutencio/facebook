@@ -5,18 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import me.alejandropradilla.myapplication.ui.theme.FacebookLoginScreen
-import me.alejandropradilla.myapplication.ui.theme.FacebookRegisterScreen
-import me.alejandropradilla.myapplication.ui.theme.FacebookTheme
+import me.alejandropradilla.myapplication.ui.Screens.FacebookLoginScreen
+import me.alejandropradilla.myapplication.ui.Screens.FacebookRegisterScreen
+import me.alejandropradilla.myapplication.ui.Screens.FeedScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,10 +27,22 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize()
             ) {
                 composable(route = "login") {
-                    FacebookLoginScreen(myNavcontroller)
+                    FacebookLoginScreen(
+                        onClickRegister = {
+                        myNavcontroller.navigate(("Register"))
+                        },
+                        onClickIniciarSesion = {
+                            myNavcontroller.navigate(("FeedScreen"))
+                        }
+                    )
                 }
                 composable(route = "register") {
-                    FacebookRegisterScreen(myNavcontroller)
+                    FacebookRegisterScreen(onClickBack = {
+                        myNavcontroller.popBackStack()
+                    })
+                }
+                composable(route = "FeedScreen") {
+                    FeedScreen()
                 }
             }
         }

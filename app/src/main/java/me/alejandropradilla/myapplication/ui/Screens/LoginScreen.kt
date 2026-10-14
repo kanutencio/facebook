@@ -1,7 +1,6 @@
-package me.alejandropradilla.myapplication.ui.theme
+package me.alejandropradilla.myapplication.ui.Screens
 
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
@@ -12,19 +11,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import me.alejandropradilla.myapplication.MainActivity
 
 // Colores oficiales de Facebook
 val FacebookBlue = Color(0xFF1877F2)
@@ -35,7 +30,7 @@ private val FacebookTextGray = Color(0xFF606770)
 private val FacebookDarkText = Color(0xFF1C1E21)
 
 @Composable
-fun FacebookLoginScreen(navController: NavController) {
+fun FacebookLoginScreen(onClickRegister: () -> Unit,onClickIniciarSesion: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -88,7 +83,9 @@ fun FacebookLoginScreen(navController: NavController) {
 
         // Botón Iniciar sesión
         Button(
-            onClick = {  },
+            onClick = {
+                onClickIniciarSesion()
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -141,11 +138,11 @@ fun FacebookLoginScreen(navController: NavController) {
         }
 
         Spacer(modifier = Modifier.height(20.dp))
-
         // Botón Crear cuenta nueva
         Button(
             onClick = {
-                navController.navigate("register")
+                    onClickRegister()
+
             },
             modifier = Modifier
                 .fillMaxWidth()
