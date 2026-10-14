@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import me.alejandropradilla.myapplication.ui.Screens.FacebookLoginScreen
 import me.alejandropradilla.myapplication.ui.Screens.FacebookRegisterScreen
 import me.alejandropradilla.myapplication.ui.Screens.FeedScreen
+import me.alejandropradilla.myapplication.ui.Screens.RecuperarSceen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +34,9 @@ class MainActivity : ComponentActivity() {
                         },
                         onClickIniciarSesion = {
                             myNavcontroller.navigate(("FeedScreen"))
+                        },
+                        onClickRecuperarContraseña = {
+                            myNavcontroller.navigate(("RecuperarSceen"))
                         }
                     )
                 }
@@ -43,6 +47,11 @@ class MainActivity : ComponentActivity() {
                 }
                 composable(route = "FeedScreen") {
                     FeedScreen()
+                }
+                composable(route = "RecuperarSceen") {
+                    RecuperarSceen(onClickBack = {
+                        myNavcontroller.popBackStack()
+                    })
                 }
             }
         }
