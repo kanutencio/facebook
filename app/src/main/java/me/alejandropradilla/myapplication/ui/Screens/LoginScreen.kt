@@ -30,7 +30,7 @@ private val FacebookTextGray = Color(0xFF606770)
 private val FacebookDarkText = Color(0xFF1C1E21)
 
 @Composable
-fun FacebookLoginScreen(onClickRegister: () -> Unit,onClickIniciarSesion: () -> Unit,onClickRecuperarContraseña: () -> Unit) {
+    fun FacebookLoginScreen(onClickRegister: () -> Unit,onClickIniciarSesion: () -> Unit,onClickRecuperarContraseña: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }

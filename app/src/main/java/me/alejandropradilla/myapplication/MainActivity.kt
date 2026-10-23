@@ -30,13 +30,15 @@ class MainActivity : ComponentActivity() {
                 composable(route = "login") {
                     FacebookLoginScreen(
                         onClickRegister = {
-                        myNavcontroller.navigate(("Register"))
+                        myNavcontroller.navigate("Register")
                         },
                         onClickIniciarSesion = {
-                            myNavcontroller.navigate(("FeedScreen"))
+                            myNavcontroller.navigate("FeedScreen"){
+                                popUpTo("")
+                            }
                         },
                         onClickRecuperarContraseña = {
-                            myNavcontroller.navigate(("RecuperarSceen"))
+                            myNavcontroller.navigate("RecuperarSceen")
                         }
                     )
                 }
